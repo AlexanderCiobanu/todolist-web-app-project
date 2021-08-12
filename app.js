@@ -14,7 +14,7 @@ app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-mongoose.connect('mongodb://localhost:27017/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://admin-alex:Test123@cluster0.ijdbp.mongodb.net/todolistDB', {useNewUrlParser: true, useUnifiedTopology: true});
 
 
 
@@ -59,7 +59,7 @@ app.get("/", function(req, res) {
         }else{
           console.log("Successfully saved item to DB.");
           }
-        })
+        });
         res.redirect("/");
     }else{
       res.render("list", {listTitle: "Today", newListItems: foundItems});
@@ -110,8 +110,6 @@ app.post("/", function(req, res){
       res.redirect("/" + listName);
     });
   }
-
-  
   
 });
 
